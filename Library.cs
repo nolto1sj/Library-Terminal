@@ -8,27 +8,51 @@ namespace LibraryTerminal
 {
     public class Library
     {
-        public List<Book> LibraryContents { get; set; }
-
-        public Library()//(List<Book> libraryContents)
+        List<Book> listOfBooks = new List<Book>
         {
-            //LibraryContents = libraryContents;
+         new Book(true, "Dune", "Frank Herbert", "Sci-fi", "", "Fair"),
+         new Book(true, "The Alchemist", "Paulo Coelho", "Fantasy", "", "Fair"),
+         new Book(true, "Lying For Money", "Dan Davies", "True Crime", "", "Fair"),
+         new Book(true, "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
+         new Book(true, "Black Count", "Tom Reiss", "Non-fiction", "", "Fair")
+        };
 
-            LibraryContents = new List<Book>()
+        public void ListAllBooks()
+        {
+            int i = 1;
+            foreach (Book book in listOfBooks)
             {
-                new Book(true, "Dune", "Frank Herbert", "Sci-fi", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair"),
-                new Book(true, "The Alchemist", "Paulo Coelho", "Fantasy", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair"),
-                new Book(true, "Lying For Money", "Dan Davies", "True Crime", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair"),
-                new Book(true, "Kafka On The Shore", "Haruki Murakami", "Magical Realism", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair"),
-                new Book(true, "Black Count", "Tom Reiss", "Non-fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair")
-            };
+                Console.WriteLine("(" + i++ + ") " + book.ToString());
+            }
+            i = 1;
         }
 
-        //***methods***
-        //return a book - this could also ask for the condition of the returned book and if it is a certain value the user is "fined"
-        //borrow a book
-        //change list order by category
-        //reserve a book
-        //remove a book (should be different from return?) I think this would allow for us to keep the duedate time as is since we would be displaying all of the books currently not checked out)
+        public void CheckoutBook(int index)
+        {
+            if (listOfBooks[--index].OnShelf == true)
+            {
+                Console.WriteLine("The following title will be checked out: " + listOfBooks[index].Title);
+                listOfBooks[index].OnShelf = false;
+                listOfBooks[index].DueDate = DateTime.Now.AddDays(7).ToString("MM-dd-yy");
+            }
+            else Console.WriteLine("This book has already been checked out.");
+            //listOfBooks.RemoveAt(index);
+            //Should this just change a book to showing as checked out on list and then using LINQ provide the user with a list of checked out books to then check in?
+            //also due date could be blank and set once a book is checkedout (DateTime.Now.AddDays(7).ToString("MM-dd-yy"))
+            //display a list of checkedout books and then have them select one to return (similar to checkingout)
+            //if statement to account for already checked out book
+
+        }
+
+        public Book TitleSearch(string title)
+        {
+            return listOfBooks.Find(x => x.Title == title);
+        }
+
+
+
+        public Library()
+        {
+        }
     }
 }

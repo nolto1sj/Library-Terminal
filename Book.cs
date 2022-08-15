@@ -27,6 +27,9 @@ namespace LibraryTerminal
 
         public Book() { }
 
-
+        public override string ToString()
+        {
+            return String.Format($"Title: {Title}, Author: {Author}, Availability: {OnShelf}, DueDate: {DueDate}");// Condition: {Condition}");
+        }
     }
 }
