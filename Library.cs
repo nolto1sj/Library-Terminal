@@ -34,6 +34,8 @@ namespace LibraryTerminal
                 Console.WriteLine("The following title will be checked out: " + listOfBooks[index].Title);
                 listOfBooks[index].OnShelf = false;
                 listOfBooks[index].DueDate = DateTime.Now.AddDays(7).ToString("MM-dd-yy");
+                Thread.Sleep(1500);
+                Console.Clear();
             }
             else Console.WriteLine("This book has already been checked out.");
             //listOfBooks.RemoveAt(index);
