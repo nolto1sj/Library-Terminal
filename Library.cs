@@ -27,6 +27,21 @@ namespace LibraryTerminal
             i = 1;
         }
 
+        //OrderedInventoryList.ForEach(car =>
+        //    {
+        //        count++;
+        //        Console.WriteLine(string.Format($"{count,2}  ") + car.ToString());
+        public void ListAvailableBooks()
+        {
+            int i = 1;
+            List<Book> availableBooks = listOfBooks.Where(x => x.OnShelf == true).ToList();
+            foreach (Book book in availableBooks)
+            {
+                Console.WriteLine("(" + i++ + ") " + book.ToString());
+            }
+            i = 1;
+        }
+
         public void CheckoutBook(int index)
         {
             if (listOfBooks[--index].OnShelf == true)

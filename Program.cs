@@ -27,7 +27,7 @@ Console.WriteLine("please enter the (index)book you would like to check out");
 int response = int.Parse(Console.ReadLine());
 gcLibrary.CheckoutBook(response);
 
-gcLibrary.ListAllBooks();
+gcLibrary.ListAvailableBooks();
 
 Console.WriteLine("please enter the (index)book you would like to check out");
 response = int.Parse(Console.ReadLine());
