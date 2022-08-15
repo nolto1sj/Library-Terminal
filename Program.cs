@@ -6,6 +6,8 @@
 //Book Three = new Book(true, "Lying For Money", "Dan Davies", "True Crime", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair");
 //Book Four = new Book(true, "Kafka On The Shore", "Haruki Murakami", "Magical Realism", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair");
 //Book Five = new Book(true, "Black Count", "Tom Reiss", "Non-fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Fair");
+//Book Six = new Book(true, "Things Fall Apart", "Chinua Achebe", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good"),
+//Book Seven = new Book(true, "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good")
 
 Library gcLibrary = new Library();
 

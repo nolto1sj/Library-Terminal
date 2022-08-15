@@ -14,7 +14,10 @@ namespace LibraryTerminal
          new Book(true, "The Alchemist", "Paulo Coelho", "Fantasy", "", "Fair"),
          new Book(true, "Lying For Money", "Dan Davies", "True Crime", "", "Fair"),
          new Book(true, "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
-         new Book(true, "Black Count", "Tom Reiss", "Non-fiction", "", "Fair")
+         new Book(true, "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
+         new Book(true, "Things Fall Apart", "Chinua Achebe", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good"),
+         new Book(true, "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good")
+
         };
 
         public void ListAllBooks()
