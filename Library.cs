@@ -15,8 +15,8 @@ namespace LibraryTerminal
          new Book(true, "Lying For Money", "Dan Davies", "True Crime", "", "Fair"),
          new Book(true, "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
          new Book(true, "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
-         new Book(true, "Things Fall Apart", "Chinua Achebe", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good"),
-         new Book(true, "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", DateTime.Now.AddDays(7).ToString("MM-dd-yy"), "Good")
+         new Book(true, "Things Fall Apart", "Chinua Achebe", "Fiction", "", "Good"),
+         new Book(true, "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", "", "Good")
 
         };
 
@@ -69,9 +69,17 @@ namespace LibraryTerminal
 
             }
 
-            public Book TitleSearch(string title)
+            public void TitleSearch(string title)
         {
-            return listOfBooks.Find(x => x.Title == title);
+            List<Book> titleSearch = new List<Book>();
+            titleSearch = listOfBooks.Where(x => x.Title == title).ToList();
+            int i = 1;
+            foreach (Book book in titleSearch)
+            {
+                Console.WriteLine("(" + i++ + ") " + book.ToString());
+            }
+            i = 1;
+
         }
 
 
