@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LibraryTerminal
 {
     public class Book
     {
-        public bool OnShelf { get; set; }
+        public string OnShelf { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Category { get; set; }
         public string DueDate { get; set; }
         public string Condition { get; set; }
 
-        public Book(bool onShelf, string title, string author, string category, string dueDate, string condition)
+        public Book(string onShelf, string title, string author, string category, string dueDate, string condition)
         {
             this.OnShelf = onShelf;
             this.Title = title;
@@ -29,7 +32,7 @@ namespace LibraryTerminal
 
         public override string ToString()
         {
-            return String.Format($"Title: {Title}, Author: {Author}, Availability: {OnShelf}, DueDate: {DueDate}");// Condition: {Condition}");
+            return string.Format($"{""} {Title,-9} {Author,-9} {OnShelf,-5} {DueDate,-5}");
         }
     }
 }
