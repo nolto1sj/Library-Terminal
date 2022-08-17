@@ -5,7 +5,7 @@ Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
 Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Quit\n");
 
-
+////gcLibrary.ListAllBooks();
 
 //Loop to validate search
 bool runProgram = true;
@@ -61,17 +61,6 @@ while (runProgram)
     //}
 }
 
-internal class Library
-{
-}
-
-////gcLibrary.ListAllBooks();
-////Console.WriteLine("please enter the (index)book you would like to check out");
-//int response = int.Parse(Console.ReadLine());
-//gcLibrary.CheckoutBook(response);
 
 
-//Console.WriteLine("please enter the (index)book you would like to check out");
-//response = int.Parse(Console.ReadLine());
-//gcLibrary.CheckoutBook(response);
 
