@@ -126,8 +126,6 @@ namespace LibraryTerminal
             booksToReturn[response].DueDate = "";
         }
 
-        public Library()
-        {
-        }
+        public Library() { }
     }
 }

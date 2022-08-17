@@ -9,35 +9,57 @@ Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. Vie
 
 //Loop to validate search
 bool runProgram = true;
+Waypoint1:
 while (runProgram)
 {
     var response = int.Parse(Console.ReadLine());
-    try
+    switch (response)
     {
-        switch (response)
-        {
-            case 1:
-                Console.WriteLine("You selected Author");
-                break;
-            case 2:
-                Console.WriteLine("You selected Title");
-                break;
-            case 3:
-                Console.WriteLine("You selected View All Books");
-                break;
-            case 4:
+        case 1:
+            Console.Write("Please enter the author you are searching for: ");
+            string authorInput = Console.ReadLine();
+            gcLibrary.SearchAll(authorInput);
+            Console.WriteLine("Type 's' to return to main menu or any other key to quit");
+            string input= Console.ReadLine().ToLower().Trim();
+            if (input == "s")
+            {
+                goto Waypoint1;
+            }
+            else
+            {
                 Console.WriteLine("Goodbye!");
                 runProgram = false;
                 break;
-            default:
-                Console.WriteLine("Please select one of the categories");
+            }
+        
+        case 2:
+            Console.Write("Please enter the title you are searching for: ");
+            string titleInput = Console.ReadLine();
+            gcLibrary.SearchAll(titleInput);
+            Console.WriteLine("Type 's' to return to main menu or any other key to quit");
+            string inputTwo = Console.ReadLine().ToLower().Trim();
+            if (inputTwo == "s")
+            {
+                goto Waypoint1;
+            }
+            else
+            {
+                Console.WriteLine("Goodbye!");
+                runProgram = false;
                 break;
-        }
+            }
+        case 3:
+            Console.WriteLine("You selected View All Books");
+            break;
+        case 4:
+            Console.WriteLine("Goodbye!");
+            runProgram = false;
+            break;
+        default:
+            Console.WriteLine("Please select one of the categories");
+            break;
     }
-    catch (Exception e)
-    {
-        Console.WriteLine("Please respopnd right please please");
-    }
+}
     //if (response == gcLibrary.Author + 1) ;
     //{
     //    string[] Library = Console.ReadLine().ToLower().Split(" ");
@@ -59,7 +81,7 @@ while (runProgram)
     //    }
 
     //}
-}
+
 
 
 
