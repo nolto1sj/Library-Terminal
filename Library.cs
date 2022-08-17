@@ -16,8 +16,12 @@ namespace LibraryTerminal
          new Book("Available", "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
          new Book("Available", "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
          new Book("Available", "Things Fall Apart", "Chinua Achebe", "Fiction", "", "Good"),
-         new Book("Available", "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", "", "Good")
-
+         new Book("Available", "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", "", "Good"),
+         new Book("Available", "Perdido Street Station", "China Mieville" , "Sci-fi", "", "New"),
+         new Book("Available", "IT", "Stephen King" , "Horror", "", "Fair"),
+         new Book("Available", "Station Eleven", "Emily St. John Mandel" , "Sci-fi", "", "New"),
+         new Book("Available", "Neverwhere", "Neil Gaiman" , "Fantasy", "", "New"),
+         new Book("Available", "The Great and Secret Show", "Clive Barker" , "Fantasy", "", "Fair"),
         };
         //public static void ShowCarList()
         //{
