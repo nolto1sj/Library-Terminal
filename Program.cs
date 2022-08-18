@@ -71,8 +71,23 @@ while (runProgram)
             }
             break;
         case "4":
-            Console.WriteLine("Thank you. Goodbye!");
-            runProgram = false;
+            bool caseFourLoop = true;
+            while (caseFourLoop)
+            {
+                gcLibrary.ListBooksToReturn();
+                Console.WriteLine("\nWould you like to:\n\n1. Return to Menu \n2. Quit\n");
+                int inputFour = int.Parse(Console.ReadLine());
+                if (inputFour == 1)
+                {
+                    goto Waypoint1;
+                }
+                else if (inputFour == 2)
+                {
+                    Console.WriteLine("Thank you. Goodbye!");
+                    runProgram = false;
+                    break;
+                }
+            }
             break;
         case "5":
             Console.WriteLine("Thank you. Goodbye!");

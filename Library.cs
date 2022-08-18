@@ -109,11 +109,13 @@ namespace LibraryTerminal
         
         public void ListBooksToReturn()
         {
+            List<Book> booksToReturn = new List<Book>();
+            booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
+            if (booksToReturn.Count >= 1)
+            {
             Console.WriteLine(string.Format($"{"Idx",-2}  {"Title",-26} {"Author",-23} {"Status",-20} {"DueDate",-5}"));
             Console.WriteLine(string.Format($"{"---",-2}  {"-----",-26} {"------",-23} {"------",-20} {"-----",-5}"));
             int i = 1;
-            List<Book> booksToReturn = new List<Book>();
-            booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
             foreach (Book book in booksToReturn)
             {
                 Console.WriteLine("(" + i++ + ") " + book.ToString());
@@ -124,6 +126,13 @@ namespace LibraryTerminal
             Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
             booksToReturn[response].OnShelf = "Available";
             booksToReturn[response].DueDate = "";
+            }
+            else
+            {
+                Console.WriteLine("There are no books to return.");
+                Thread.Sleep(1500);
+                Console.Clear();
+            }
         }
 
         public Library() { }
