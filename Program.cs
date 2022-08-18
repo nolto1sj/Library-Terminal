@@ -4,15 +4,13 @@ using LibraryTerminal;
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
 //Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
-
 ////gcLibrary.ListAllBooks();
-
 //Loop to validate search
 bool runProgram = true;
 Waypoint1:
 while (runProgram)
 {
-    Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
+    Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View All Books\n4. Return Book\n5. Quit\n");
 
     string response = Console.ReadLine();
     switch (response)
@@ -21,7 +19,7 @@ while (runProgram)
             Console.Write("Please enter the author you are searching for: ");
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
-            Console.WriteLine("Type 's' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType 's' to return to main menu or any other key to quit");
             var input = Console.ReadLine().ToLower().Trim();
             if (input == "s")
             {
@@ -29,16 +27,15 @@ while (runProgram)
             }
             else
             {
-                Console.WriteLine("Goodbye!");
+                Console.WriteLine("Thank you. Goodbye!");
                 runProgram = false;
                 break;
-            }
-        
+            }  
         case "2":
             Console.Write("Please enter the title you are searching for: ");
             string titleInput = Console.ReadLine();
             gcLibrary.SearchAll(titleInput);
-            Console.WriteLine("Type 's' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType 's' to return to main menu or any other key to quit");
             string inputTwo = Console.ReadLine().ToLower().Trim();
             if (inputTwo == "s")
             {
@@ -46,7 +43,7 @@ while (runProgram)
             }
             else
             {
-                Console.WriteLine("Goodbye!");
+                Console.WriteLine("Thank you. Goodbye!");
                 runProgram = false;
                 break;
             }
@@ -55,10 +52,10 @@ while (runProgram)
             while (caseThreeLoop)
             {
                 gcLibrary.ListAllBooks();
-                Console.Write("Please select a book to checkout");
+                Console.Write("\nPlease select a book to checkout");
                 int bookSelection = int.Parse(Console.ReadLine());
                 gcLibrary.CheckoutBook(bookSelection);
-                Console.WriteLine("Would you like to:\n\n1. return to menu \n2. Quit\n");
+                Console.WriteLine("\nWould you like to:\n\n1. Return to Menu \n2. Quit\n");
                 //extend book maybe put book on hold
                 int inputThree = int.Parse(Console.ReadLine());
                 if (inputThree == 1)
@@ -67,18 +64,18 @@ while (runProgram)
                 }
                 else if (inputThree == 2)
                 {
-                    Console.WriteLine("Goodbye!");
+                    Console.WriteLine("Thank you. Goodbye!");
                     runProgram = false;
                     break;
                 }
             }
             break;
         case "4":
-            Console.WriteLine("Goodbye!");
+            Console.WriteLine("Thank you. Goodbye!");
             runProgram = false;
             break;
         case "5":
-            Console.WriteLine("Goodbye!");
+            Console.WriteLine("Thank you. Goodbye!");
             runProgram = false;
             break;
         default:
@@ -92,10 +89,8 @@ while (runProgram)
 //    {
 //        string author = response[1];
 //        string title = response[2];
-
 //        else if (response == Library.response + 2)
 //        {
-
 //            break;
 //        }
 //        else
@@ -103,13 +98,5 @@ while (runProgram)
 //            Console.Write("\nInvalid entry. Please enter a number between (1-3).\n");
 //            continue;
 //        }
-
 //    }
-
 //}
-
-
-
-
-
-

@@ -10,24 +10,24 @@ namespace LibraryTerminal
     {
         List<Book> ListOfBooks = new List<Book>
         {
+         new Book("Available", "IT", "Stephen King", "Horror", "", "Fair"),
          new Book("Available", "Dune", "Frank Herbert", "Sci-fi", "", "Fair"),
+         new Book("Available", "Neverwhere", "Neil Gaiman", "Fantasy", "", "New"),
+         new Book("Available", "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
          new Book("Available", "The Alchemist", "Paulo Coelho", "Fantasy", "", "Fair"),
          new Book("Available", "Lying For Money", "Dan Davies", "True Crime", "", "Fair"),
-         new Book("Available", "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
-         new Book("Available", "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
          new Book("Available", "Things Fall Apart", "Chinua Achebe", "Fiction", "", "Good"),
+         new Book("Available", "Station Eleven", "Emily St. John Mandel", "Sci-fi", "", "New"),
+         new Book("Available", "Perdido Street Station", "China Mieville", "Sci-fi", "", "New"),
+         new Book("Available", "The Great and Secret Show", "Clive Barker", "Fantasy", "", "Fair"),
          new Book("Available", "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", "", "Good"),
-         new Book("Available", "Perdido Street Station", "China Mieville" , "Sci-fi", "", "New"),
-         new Book("Available", "IT", "Stephen King" , "Horror", "", "Fair"),
-         new Book("Available", "Station Eleven", "Emily St. John Mandel" , "Sci-fi", "", "New"),
-         new Book("Available", "Neverwhere", "Neil Gaiman" , "Fantasy", "", "New"),
-         new Book("Available", "The Great and Secret Show", "Clive Barker" , "Fantasy", "", "Fair"),
+         new Book("Available", "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
         };
 
         public void ListAllBooks()
         {
-            Console.WriteLine(string.Format($"{"Idx",2}  {"Title",-9} {"Author",-9} {"Status",-5} {"DueDate",-5}"));
-            Console.WriteLine(string.Format($"{"---",2}  {"-----",-9} {"-----",-9} {"----",-5} {"-----",-5}"));
+            Console.WriteLine(string.Format($"{"Idx",-2}  {"Title",-26} {"Author",-23} {"Status",-20} {"DueDate",-5}"));
+            Console.WriteLine(string.Format($"{"---",-2}  {"-----",-26} {"------",-23} {"------",-20} {"-----",-5}"));
             int i = 1;
             foreach (Book book in ListOfBooks)
             {
@@ -109,8 +109,8 @@ namespace LibraryTerminal
         
         public void ListBooksToReturn()
         {
-            Console.WriteLine(string.Format($"{"Idx",2}  {"Title",-9} {"Author",-9} {"Status",-5} {"DueDate",-5}"));
-            Console.WriteLine(string.Format($"{"---",2}  {"-----",-9} {"-----",-9} {"----",-5} {"-----",-5}"));
+            Console.WriteLine(string.Format($"{"Idx",-2}  {"Title",-26} {"Author",-23} {"Status",-20} {"DueDate",-5}"));
+            Console.WriteLine(string.Format($"{"---",-2}  {"-----",-26} {"------",-23} {"------",-20} {"-----",-5}"));
             int i = 1;
             List<Book> booksToReturn = new List<Book>();
             booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();

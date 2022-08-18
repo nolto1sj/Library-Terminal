@@ -32,7 +32,7 @@ namespace LibraryTerminal
 
         public override string ToString()
         {
-            return string.Format($"{""} {Title,-9} {Author,-9} {OnShelf,-5} {DueDate,-5}");
+            return string.Format($"{""} {Title,-26} {Author,-23} {OnShelf,-15} {DueDate,-5}");
         }
     }
 }
