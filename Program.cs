@@ -14,10 +14,10 @@ while (runProgram)
 {
     Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
 
-    int response = int.Parse(Console.ReadLine());
+    string response = Console.ReadLine();
     switch (response)
     {
-        case 1:
+        case "1":
             Console.Write("Please enter the author you are searching for: ");
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
@@ -34,7 +34,7 @@ while (runProgram)
                 break;
             }
         
-        case 2:
+        case "2":
             Console.Write("Please enter the title you are searching for: ");
             string titleInput = Console.ReadLine();
             gcLibrary.SearchAll(titleInput);
@@ -50,7 +50,7 @@ while (runProgram)
                 runProgram = false;
                 break;
             }
-        case 3:
+        case "3":
             bool caseThreeLoop = true;
             while (caseThreeLoop)
             {
@@ -73,7 +73,11 @@ while (runProgram)
                 }
             }
             break;
-        case 4:
+        case "4":
+            Console.WriteLine("Goodbye!");
+            runProgram = false;
+            break;
+        case "5":
             Console.WriteLine("Goodbye!");
             runProgram = false;
             break;
