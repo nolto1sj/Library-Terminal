@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -153,11 +153,13 @@ namespace LibraryTerminal
         
         public void ListBooksToReturn()
         {
+            List<Book> booksToReturn = new List<Book>();
+            booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
+            if (booksToReturn.Count >= 1)
+            {
             Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
             Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
             int i = 1;
-            List<Book> booksToReturn = new List<Book>();
-            booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
             foreach (Book book in booksToReturn)
             {
                 if (i <= 9)
@@ -179,6 +181,13 @@ namespace LibraryTerminal
             Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
             booksToReturn[response].OnShelf = "Available";
             booksToReturn[response].DueDate = "";
+            }
+            else
+            {
+                Console.WriteLine("There are no books to return.");
+                Thread.Sleep(1500);
+                Console.Clear();
+            }
         }
 
         public Library() { }
