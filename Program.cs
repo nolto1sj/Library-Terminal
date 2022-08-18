@@ -3,7 +3,7 @@ using LibraryTerminal;
 
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
-Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
+//Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
 
 ////gcLibrary.ListAllBooks();
 
@@ -12,7 +12,9 @@ bool runProgram = true;
 Waypoint1:
 while (runProgram)
 {
-    var response = int.Parse(Console.ReadLine());
+    Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
+
+    int response = int.Parse(Console.ReadLine());
     switch (response)
     {
         case 1:
@@ -20,7 +22,7 @@ while (runProgram)
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
             Console.WriteLine("Type 's' to return to main menu or any other key to quit");
-            string input= Console.ReadLine().ToLower().Trim();
+            var input = Console.ReadLine().ToLower().Trim();
             if (input == "s")
             {
                 goto Waypoint1;
@@ -56,12 +58,14 @@ while (runProgram)
                 Console.Write("Please select a book to checkout");
                 int bookSelection = int.Parse(Console.ReadLine());
                 gcLibrary.CheckoutBook(bookSelection);
-                Console.WriteLine("Would you like to checkout another book? Type 'y' to do so, or any other key to quit.");
-                string inputThree = Console.ReadLine().ToLower().Trim();
-                if (inputThree == "y")
+                Console.WriteLine("Would you like to:\n\n1. return to menu \n2. Quit\n");
+                //extend book maybe put book on hold
+                int inputThree = int.Parse(Console.ReadLine());
+                if (inputThree == 1)
                 {
+                    goto Waypoint1;
                 }
-                else
+                else if (inputThree == 2)
                 {
                     Console.WriteLine("Goodbye!");
                     runProgram = false;

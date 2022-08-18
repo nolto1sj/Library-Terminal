@@ -56,7 +56,7 @@ namespace LibraryTerminal
         public void SearchAll(string titleorauthor)
         {
             List<Book> searchList = new List<Book>();
-            searchList = ListOfBooks.Where(x => x.Title.Contains(titleorauthor) || x.Author.Contains(titleorauthor)).ToList();
+            searchList = ListOfBooks.Where(x => x.Title.Contains(titleorauthor, StringComparison.OrdinalIgnoreCase) || x.Author.Contains(titleorauthor, StringComparison.OrdinalIgnoreCase)).ToList();
             if (searchList.Count >= 1)
             {
                 int i = 1;
