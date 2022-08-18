@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,12 +26,23 @@ namespace LibraryTerminal
 
         public void ListAllBooks()
         {
-            Console.WriteLine(string.Format($"{"Idx",-2}  {"Title",-26} {"Author",-23} {"Status",-20} {"DueDate",-5}"));
-            Console.WriteLine(string.Format($"{"---",-2}  {"-----",-26} {"------",-23} {"------",-20} {"-----",-5}"));
+            Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
+            Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
             int i = 1;
             foreach (Book book in ListOfBooks)
             {
-                Console.WriteLine("(" + i++ + ") " + book.ToString());
+                if (i <= 9)
+                {
+                    Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                }
+                else if (i >= 10 && i <= 99)
+                {
+                    Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                }
+                else
+                {
+                    Console.WriteLine("(" + i++ + ") " + book.ToString());
+                }
             }
         }
 
@@ -62,7 +73,18 @@ namespace LibraryTerminal
                 int i = 1;
                 foreach (Book book in searchList)
                 {
-                    Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    if (i <= 9)
+                    {
+                        Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                    }
+                    else if (i >= 10 && i <= 99)
+                    {
+                        Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    }
                 }
             }
             else
@@ -80,7 +102,18 @@ namespace LibraryTerminal
                 int i = 1;
                 foreach (Book book in titleSearch)
                 {
-                    Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    if (i <= 9)
+                    {
+                        Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                    }
+                    else if (i >= 10 && i <= 99)
+                    {
+                        Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    }
                 }
             }
             else
@@ -98,7 +131,18 @@ namespace LibraryTerminal
                 int i = 1;
                 foreach (Book book in authorSearch)
                 {
-                    Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    if (i <= 9)
+                    {
+                        Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                    }
+                    else if (i >= 10 && i <= 99)
+                    {
+                        Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    }
                 }
             }
             else
@@ -113,12 +157,23 @@ namespace LibraryTerminal
             booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
             if (booksToReturn.Count >= 1)
             {
-            Console.WriteLine(string.Format($"{"Idx",-2}  {"Title",-26} {"Author",-23} {"Status",-20} {"DueDate",-5}"));
-            Console.WriteLine(string.Format($"{"---",-2}  {"-----",-26} {"------",-23} {"------",-20} {"-----",-5}"));
+            Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
+            Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
             int i = 1;
             foreach (Book book in booksToReturn)
             {
-                Console.WriteLine("(" + i++ + ") " + book.ToString());
+                if (i <= 9)
+                {
+                    Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                }
+                else if (i >= 10 && i <= 99)
+                {
+                    Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                }
+                else
+                {
+                    Console.WriteLine("(" + i++ + ") " + book.ToString());
+                }
             }
             Console.WriteLine("Please enter the index of the book you wish to return");
             int response = int.Parse(Console.ReadLine());
