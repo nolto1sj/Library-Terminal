@@ -3,7 +3,7 @@ using LibraryTerminal;
 
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
-Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Quit\n");
+Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
 
 ////gcLibrary.ListAllBooks();
 
@@ -49,7 +49,25 @@ while (runProgram)
                 break;
             }
         case 3:
-            Console.WriteLine("You selected View All Books");
+            bool caseThreeLoop = true;
+            while (caseThreeLoop)
+            {
+                gcLibrary.ListAllBooks();
+                Console.Write("Please select a book to checkout");
+                int bookSelection = int.Parse(Console.ReadLine());
+                gcLibrary.CheckoutBook(bookSelection);
+                Console.WriteLine("Would you like to checkout another book? Type 'y' to do so, or any other key to quit.");
+                string inputThree = Console.ReadLine().ToLower().Trim();
+                if (inputThree == "y")
+                {
+                }
+                else
+                {
+                    Console.WriteLine("Goodbye!");
+                    runProgram = false;
+                    break;
+                }
+            }
             break;
         case 4:
             Console.WriteLine("Goodbye!");
@@ -60,27 +78,28 @@ while (runProgram)
             break;
     }
 }
-    //if (response == gcLibrary.Author + 1) ;
-    //{
-    //    string[] Library = Console.ReadLine().ToLower().Split(" ");
-    //    {
-    //        string author = response[1];
-    //        string title = response[2];
+//if (response == gcLibrary.Author + 1) ;
+//{
+//    string[] Library = Console.ReadLine().ToLower().Split(" ");
+//    {
+//        string author = response[1];
+//        string title = response[2];
 
-    //        else if (response == Library.response + 2)
-    //        {
+//        else if (response == Library.response + 2)
+//        {
 
-    //            break;
-    //        }
-    //        else
-    //        {
-    //            Console.Write("\nInvalid entry. Please enter a number between (1-3).\n");
-    //            continue;
-    //        }
+//            break;
+//        }
+//        else
+//        {
+//            Console.Write("\nInvalid entry. Please enter a number between (1-3).\n");
+//            continue;
+//        }
 
-    //    }
+//    }
 
-    //}
+//}
+
 
 
 
