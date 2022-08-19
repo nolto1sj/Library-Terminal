@@ -1,8 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using LibraryTerminal;
-using System.Drawing.Printing;
-using static System.Net.Mime.MediaTypeNames;
-using System.Drawing;
 
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
@@ -54,33 +51,41 @@ while (runProgram)
             {
                 gcLibrary.ListAllBooks();
                 Console.Write("\nPlease select a book to checkout: ");
-                int bookSelection = int.Parse(Console.ReadLine());
-                while(bookSelection > Library.ListOfBooks.Count)
+                try
+                {
+                    int bookSelection = int.Parse(Console.ReadLine());
+                    while (bookSelection > Library.ListOfBooks.Count)
+                    {
+                        Console.WriteLine($"Invalid index. Please select 1-{Library.ListOfBooks.Count}.");
+                        Thread.Sleep(1000);
+                        goto Case3;
+                    }
+                    gcLibrary.CheckoutBook(bookSelection);
+                    Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
+                    string inputThree = Console.ReadLine();
+                    if (inputThree == "1")
+                    {
+                        goto Beginning;
+                    }
+                    else if (inputThree == "2")
+                    {
+                        goto Case3;
+                    }
+                    else if (inputThree == "3")
+                    {
+                        goto Case4;
+                    }
+                    else
+                    {
+                        goto Case5;
+                    }
+                }
+                catch
                 {
                     Console.WriteLine($"Invalid index. Please select 1-{Library.ListOfBooks.Count}.");
                     Thread.Sleep(1000);
                     goto Case3;
-                }
-                gcLibrary.CheckoutBook(bookSelection);
-                Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
-                //extend book maybe put book on hold
-                string inputThree = Console.ReadLine();
-                if (inputThree == "1")
-                {
-                    goto Beginning;
-                }
-                else if (inputThree == "2")
-                {
-                    goto Case3;
-                }
-                else if (inputThree == "3")
-                {
-                    goto Case4;
-                }
-                else
-                {
-                    goto Case5;
-                }
+                }      
             }
             break;
         case "4":

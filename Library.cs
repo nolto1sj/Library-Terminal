@@ -58,7 +58,12 @@ namespace LibraryTerminal
             }
             else
             {
-                Console.WriteLine("This book has already been checked out. Would you like to reserve it?");
+                Console.Write("This book has already been checked out. Would you like to reserve it? (y/n) ");
+                string input = Console.ReadLine();
+                do
+                {
+
+                } while (input == "y");
                 Thread.Sleep(1500);
                 Console.Clear();
             }
