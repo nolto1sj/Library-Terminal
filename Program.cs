@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using LibraryTerminal;
+using System.Drawing.Printing;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
 
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
@@ -21,33 +24,30 @@ while (runProgram)
             Console.Write("Please enter the author you are searching for: ");
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
-            Console.WriteLine("\nType 's' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType '1' to return to main menu or any other key to quit");
             var input = Console.ReadLine().ToLower().Trim();
-            if (input == "s")
+            if (input == "1")
             {
                 goto Beginning;
             }
             else
             {
-                Console.WriteLine("Thank you. Goodbye!");
-                runProgram = false;
-                break;
+                goto Case5;
             }  
         case "2":
+            Console.Clear();
             Console.Write("Please enter the title you are searching for: ");
             string titleInput = Console.ReadLine();
             gcLibrary.SearchAll(titleInput);
-            Console.WriteLine("\nType 's' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType '1' to return to main menu or any other key to quit");
             string inputTwo = Console.ReadLine().ToLower().Trim();
-            if (inputTwo == "s")
+            if (inputTwo == "1")
             {
                 goto Beginning;
             }
             else
             {
-                Console.WriteLine("Thank you. Goodbye!");
-                runProgram = false;
-                break;
+                goto Case5;
             }
         case "3":
             Case3:
@@ -115,11 +115,15 @@ while (runProgram)
             break;
         case "5":
             Case5:
-            Console.WriteLine("Thank you. Goodbye!");
+            Console.WriteLine("Thank you for stopping by!");
+            Thread.Sleep(800);
+            Console.WriteLine("Happy reading!");
+            Thread.Sleep(800);
             runProgram = false;
             break;
         default:
-            Console.WriteLine("Please select one of the categories");
+            Console.WriteLine("Please select one of the categories (1-5) ");
+            Thread.Sleep(1000);
             break;
     }
 }

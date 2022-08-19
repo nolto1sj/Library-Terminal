@@ -70,6 +70,8 @@ namespace LibraryTerminal
             searchList = ListOfBooks.Where(x => x.Title.Contains(titleorauthor, StringComparison.OrdinalIgnoreCase) || x.Author.Contains(titleorauthor, StringComparison.OrdinalIgnoreCase)).ToList();
             if (searchList.Count >= 1)
             {
+                Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
+                Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
                 int i = 1;
                 foreach (Book book in searchList)
                 {
