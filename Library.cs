@@ -60,12 +60,16 @@ namespace LibraryTerminal
             {
                 Console.Write("This book has already been checked out. Would you like to reserve it? (y/n) ");
                 string input = Console.ReadLine();
-                do
+                while (input == "y")
                 {
                     Console.Write("Please enter your name: ");
+                    string name = Console.ReadLine();
                     Console.Write("Please enter your email: ");
-                    Console.Write($"You will be notified when {ListOfBooks[index].Title} is available. It is due by {ListOfBooks[index].DueDate}");
-                } while (input == "y");
+                    string email = Console.ReadLine();
+                    Console.Write("You will be notified when " + "'" + ListOfBooks[index].Title + "'" + " by " + ListOfBooks[index].Author + " is available. It is due by " + ListOfBooks[index].DueDate + ".");
+                    Thread.Sleep(2000);
+                    break;
+                }
                 Thread.Sleep(1500);
                 Console.Clear();
             }
