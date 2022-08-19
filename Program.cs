@@ -6,9 +6,6 @@ using System.Drawing;
 
 Library gcLibrary = new Library();
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
-//Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View all books\n4. Return a book\n5. Quit\n");
-////gcLibrary.ListAllBooks();
-//Loop to validate search
 bool runProgram = true;
 Beginning:
 while (runProgram)
@@ -67,16 +64,16 @@ while (runProgram)
                 gcLibrary.CheckoutBook(bookSelection);
                 Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
                 //extend book maybe put book on hold
-                int inputThree = int.Parse(Console.ReadLine());
-                if (inputThree == 1)
+                string inputThree = Console.ReadLine();
+                if (inputThree == "1")
                 {
                     goto Beginning;
                 }
-                else if (inputThree == 2)
+                else if (inputThree == "2")
                 {
                     goto Case3;
                 }
-                else if (inputThree == 3)
+                else if (inputThree == "3")
                 {
                     goto Case4;
                 }
@@ -94,16 +91,16 @@ while (runProgram)
             {
                 gcLibrary.ListBooksToReturn();
                 Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Return another book\n3. Checkout a book\n4. Quit\n ");
-                int inputFour = int.Parse(Console.ReadLine());
-                if (inputFour == 1)
+                string inputFour = Console.ReadLine();
+                if (inputFour == "1")
                 {
                     goto Beginning;
                 }
-                else if (inputFour == 2)
+                else if (inputFour == "2")
                 {
                     goto Case4;
                 }
-                else if (inputFour == 3)
+                else if (inputFour == "3")
                 {
                     goto Case3;
                 }
