@@ -52,7 +52,7 @@ namespace LibraryTerminal
             {
                 Console.WriteLine("The following book will be checked out: " + ListOfBooks[index].Title + " by " + ListOfBooks[index].Author);
                 ListOfBooks[index].OnShelf = "Not Available";
-                ListOfBooks[index].DueDate = DateTime.Now.AddDays(7).ToString("MM-dd-yy");
+                ListOfBooks[index].DueDate = DateTime.Now.AddDays(14).ToString("MM-dd-yy");
                 Thread.Sleep(1500);
                 Console.Clear();
             }
@@ -62,7 +62,9 @@ namespace LibraryTerminal
                 string input = Console.ReadLine();
                 do
                 {
-
+                    Console.Write("Please enter your name: ");
+                    Console.Write("Please enter your email: ");
+                    Console.Write($"You will be notified when {ListOfBooks[index].Title} is available. It is due by {ListOfBooks[index].DueDate}");
                 } while (input == "y");
                 Thread.Sleep(1500);
                 Console.Clear();
