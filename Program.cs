@@ -10,6 +10,7 @@ bool runProgram = true;
 Beginning:
 while (runProgram)
 {
+    Console.Clear();
     Console.WriteLine("Would you like to search by (1-5):\n\n1. Author \n2. Title \n3. View All Books\n4. Return Book\n5. Quit\n");
 
     string response = Console.ReadLine();
@@ -57,6 +58,12 @@ while (runProgram)
                 gcLibrary.ListAllBooks();
                 Console.Write("\nPlease select a book to checkout: ");
                 int bookSelection = int.Parse(Console.ReadLine());
+                while(bookSelection > Library.ListOfBooks.Count)
+                {
+                    Console.WriteLine($"Invalid index. Please select 1-{Library.ListOfBooks.Count}.");
+                    Thread.Sleep(1000);
+                    goto Case3;
+                }
                 gcLibrary.CheckoutBook(bookSelection);
                 Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
                 //extend book maybe put book on hold
@@ -67,9 +74,15 @@ while (runProgram)
                 }
                 else if (inputThree == 2)
                 {
-                    Console.WriteLine("Thank you. Goodbye!");
-                    runProgram = false;
-                    break;
+                    goto Case3;
+                }
+                else if (inputThree == 3)
+                {
+                    goto Case4;
+                }
+                else
+                {
+                    goto Case5;
                 }
             }
             break;

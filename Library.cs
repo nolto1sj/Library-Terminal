@@ -8,7 +8,7 @@ namespace LibraryTerminal
 {
     public class Library
     {
-        List<Book> ListOfBooks = new List<Book>
+        public static List<Book> ListOfBooks = new List<Book>
         {
          new Book("Available", "IT", "Stephen King", "Horror", "", "Fair"),
          new Book("Available", "Dune", "Frank Herbert", "Sci-fi", "", "Fair"),
@@ -181,6 +181,8 @@ namespace LibraryTerminal
                 Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
                 booksToReturn[response].OnShelf = "Available";
                 booksToReturn[response].DueDate = "";
+                Thread.Sleep(1500);
+                Console.Clear();
             }
             else
             {
