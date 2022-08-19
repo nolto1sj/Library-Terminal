@@ -7,15 +7,16 @@ Console.WriteLine("Welcome to the Grand Circus Library!\n");
 ////gcLibrary.ListAllBooks();
 //Loop to validate search
 bool runProgram = true;
-Waypoint1:
+Beginning:
 while (runProgram)
 {
-    Console.WriteLine("Would you like to search by:\n\n1. Author \n2. Title \n3. View All Books\n4. Return Book\n5. Quit\n");
+    Console.WriteLine("Would you like to search by (1-5):\n\n1. Author \n2. Title \n3. View All Books\n4. Return Book\n5. Quit\n");
 
     string response = Console.ReadLine();
     switch (response)
     {
         case "1":
+            Console.Clear();
             Console.Write("Please enter the author you are searching for: ");
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
@@ -23,7 +24,7 @@ while (runProgram)
             var input = Console.ReadLine().ToLower().Trim();
             if (input == "s")
             {
-                goto Waypoint1;
+                goto Beginning;
             }
             else
             {
@@ -39,7 +40,7 @@ while (runProgram)
             string inputTwo = Console.ReadLine().ToLower().Trim();
             if (inputTwo == "s")
             {
-                goto Waypoint1;
+                goto Beginning;
             }
             else
             {
@@ -48,19 +49,21 @@ while (runProgram)
                 break;
             }
         case "3":
+            Case3:
+            Console.Clear();
             bool caseThreeLoop = true;
             while (caseThreeLoop)
             {
                 gcLibrary.ListAllBooks();
-                Console.Write("\nPlease select a book to checkout");
+                Console.Write("\nPlease select a book to checkout: ");
                 int bookSelection = int.Parse(Console.ReadLine());
                 gcLibrary.CheckoutBook(bookSelection);
-                Console.WriteLine("\nWould you like to:\n\n1. Return to Menu \n2. Quit\n");
+                Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
                 //extend book maybe put book on hold
                 int inputThree = int.Parse(Console.ReadLine());
                 if (inputThree == 1)
                 {
-                    goto Waypoint1;
+                    goto Beginning;
                 }
                 else if (inputThree == 2)
                 {
@@ -71,25 +74,34 @@ while (runProgram)
             }
             break;
         case "4":
+            Case4:
+            Console.Clear();
             bool caseFourLoop = true;
             while (caseFourLoop)
             {
                 gcLibrary.ListBooksToReturn();
-                Console.WriteLine("\nWould you like to:\n\n1. Return to Menu \n2. Quit\n");
+                Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Return another book\n3. Checkout a book\n4. Quit\n ");
                 int inputFour = int.Parse(Console.ReadLine());
                 if (inputFour == 1)
                 {
-                    goto Waypoint1;
+                    goto Beginning;
                 }
                 else if (inputFour == 2)
                 {
-                    Console.WriteLine("Thank you. Goodbye!");
-                    runProgram = false;
-                    break;
+                    goto Case4;
                 }
+                else if (inputFour == 3)
+                {
+                    goto Case3;
+                }
+                else
+                {
+                    goto Case5;
+                } 
             }
             break;
         case "5":
+            Case5:
             Console.WriteLine("Thank you. Goodbye!");
             runProgram = false;
             break;
@@ -98,20 +110,3 @@ while (runProgram)
             break;
     }
 }
-//if (response == gcLibrary.Author + 1) ;
-//{
-//    string[] Library = Console.ReadLine().ToLower().Split(" ");
-//    {
-//        string author = response[1];
-//        string title = response[2];
-//        else if (response == Library.response + 2)
-//        {
-//            break;
-//        }
-//        else
-//        {
-//            Console.Write("\nInvalid entry. Please enter a number between (1-3).\n");
-//            continue;
-//        }
-//    }
-//}

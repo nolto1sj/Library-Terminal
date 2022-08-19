@@ -157,30 +157,30 @@ namespace LibraryTerminal
             booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
             if (booksToReturn.Count >= 1)
             {
-            Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
-            Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
-            int i = 1;
-            foreach (Book book in booksToReturn)
-            {
-                if (i <= 9)
+                Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
+                Console.WriteLine(string.Format($"{"---",-5}  {"-----",-26} {"------",-23} {"------",-15} {"-------",-5}"));
+                int i = 1;
+                foreach (Book book in booksToReturn)
                 {
-                    Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                    if (i <= 9)
+                    {
+                        Console.WriteLine("(" + i++ + ")   " + book.ToString());
+                    }
+                    else if (i >= 10 && i <= 99)
+                    {
+                        Console.WriteLine("(" + i++ + ")  " + book.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("(" + i++ + ") " + book.ToString());
+                    }
                 }
-                else if (i >= 10 && i <= 99)
-                {
-                    Console.WriteLine("(" + i++ + ")  " + book.ToString());
-                }
-                else
-                {
-                    Console.WriteLine("(" + i++ + ") " + book.ToString());
-                }
-            }
-            Console.WriteLine("Please enter the index of the book you wish to return");
-            int response = int.Parse(Console.ReadLine());
-            response = response - 1;
-            Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
-            booksToReturn[response].OnShelf = "Available";
-            booksToReturn[response].DueDate = "";
+                Console.WriteLine("Please enter the index of the book you wish to return");
+                int response = int.Parse(Console.ReadLine());
+                response = response - 1;
+                Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
+                booksToReturn[response].OnShelf = "Available";
+                booksToReturn[response].DueDate = "";
             }
             else
             {
@@ -189,7 +189,6 @@ namespace LibraryTerminal
                 Console.Clear();
             }
         }
-
         public Library() { }
     }
 }
