@@ -8,7 +8,7 @@ Beginning:
 while (runProgram)
 {
     Console.Clear();
-    Console.WriteLine("Would you like to search by (1-5):\n\n1. Author \n2. Title \n3. View All Books\n4. Return Book\n5. Quit\n");
+    Console.WriteLine("Would you like to search by (1-5):\n\n1. Author \n2. Title \n3. View All Books/Checkout \n4. Return Book\n5. Quit\n");
 
     string response = Console.ReadLine();
     switch (response)
