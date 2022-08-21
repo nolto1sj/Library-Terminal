@@ -1,0 +1,12 @@
+Available,IT,Stephen King,Horror,N/A,Fair
+Available,Dune,Frank Herbert,Sci-fi,N/A,Fair
+Available,Neverwhere,Neil Gaiman,Fantasy,N/A,New
+Available,Black Count,Tom Reiss,Non-fiction,N/A,Fair
+Available,The Alchemist,Paulo Coelho,Fantasy,N/A,Fair
+Available,Lying For Money,Dan Davies,True Crime,N/A,Fair
+Available,Things Fall Apart,Chinua Achebe,Fiction,N/A,Good
+Available,Station Eleven,Emily St. John Mandel,Sci-fi,N/A,New
+Available,Perdido Street Station,China Mieville,Sci-fi,N/A,New
+Available,The Great and Secret Show,Clive Barker,Fantasy,N/A,Fair
+Available,Half Of a Yellow Sun,Chimamanda Adichie,Fiction,N/A,Good
+Available,Kafka On The Shore,Haruki Murakami,Magical Realism,N/A,Fair

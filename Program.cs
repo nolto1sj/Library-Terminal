@@ -1,7 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using LibraryTerminal;
 
+//FileIO
+string libraryPath = $@"..\..\..\LibraryContents.txt";
+
+StreamReader reader = new StreamReader(libraryPath);
 Library gcLibrary = new Library();
+string currentLine = reader.ReadLine();
+while (currentLine != null)
+{
+    List<string> list = currentLine.Split(",").ToList();
+    gcLibrary.AddBooks(list[0], list[1], list[2], list[3], list[4], list[5]);
+    currentLine = reader.ReadLine();
+}
+reader.Close();
+
+//MainProgram
 Console.WriteLine("Welcome to the Grand Circus Library!\n");
 bool runProgram = true;
 Beginning:
@@ -18,24 +32,24 @@ while (runProgram)
             Console.Write("Please enter the author you are searching for: ");
             string authorInput = Console.ReadLine();
             gcLibrary.SearchAll(authorInput);
-            Console.WriteLine("\nType '1' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType '0' to return to main menu or any other key to quit");
             var input = Console.ReadLine().ToLower().Trim();
-            if (input == "1")
+            if (input == "0")
             {
                 goto Beginning;
             }
             else
             {
                 goto Case5;
-            }  
+            }
         case "2":
             Console.Clear();
             Console.Write("Please enter the title you are searching for: ");
             string titleInput = Console.ReadLine();
             gcLibrary.SearchAll(titleInput);
-            Console.WriteLine("\nType '1' to return to main menu or any other key to quit");
+            Console.WriteLine("\nType '0' to return to main menu or any other key to quit");
             string inputTwo = Console.ReadLine().ToLower().Trim();
-            if (inputTwo == "1")
+            if (inputTwo == "0")
             {
                 goto Beginning;
             }
@@ -44,58 +58,65 @@ while (runProgram)
                 goto Case5;
             }
         case "3":
-            Case3:
+        Case3:
             Console.Clear();
             bool caseThreeLoop = true;
             while (caseThreeLoop)
             {
                 gcLibrary.ListAllBooks();
-                Console.Write("\nPlease select a book to checkout: ");
+                Console.Write("\nPlease select a book to checkout or type '0' to return to main menu: ");
                 try
                 {
                     int bookSelection = int.Parse(Console.ReadLine());
-                    while (bookSelection > Library.ListOfBooks.Count)
-                    {
-                        Console.WriteLine($"Invalid index. Please select 1-{Library.ListOfBooks.Count}.");
-                        Thread.Sleep(1000);
-                        goto Case3;
-                    }
-                    gcLibrary.CheckoutBook(bookSelection);
-                    Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
-                    string inputThree = Console.ReadLine();
-                    if (inputThree == "1")
+                    if (bookSelection == 0)
                     {
                         goto Beginning;
                     }
-                    else if (inputThree == "2")
-                    {
-                        goto Case3;
-                    }
-                    else if (inputThree == "3")
-                    {
-                        goto Case4;
-                    }
                     else
                     {
-                        goto Case5;
+                        while (bookSelection > gcLibrary.ListOfBooks.Count)
+                        {
+                            Console.WriteLine($"Invalid index. Please select 1-{gcLibrary.ListOfBooks.Count}.");
+                            Thread.Sleep(1000);
+                            goto Case3;
+                        }
+                        gcLibrary.CheckoutBook(bookSelection);
+                        Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Checkout another book\n3. Return a book\n4. Quit\n ");
+                        string inputThree = Console.ReadLine();
+                        if (inputThree == "1")
+                        {
+                            goto Beginning;
+                        }
+                        else if (inputThree == "2")
+                        {
+                            goto Case3;
+                        }
+                        else if (inputThree == "3")
+                        {
+                            goto Case4;
+                        }
+                        else
+                        {
+                            goto Case5;
+                        }
                     }
                 }
                 catch
                 {
-                    Console.WriteLine($"Invalid index. Please select 1-{Library.ListOfBooks.Count}.");
+                    Console.WriteLine($"Invalid index. Please select 1-{gcLibrary.ListOfBooks.Count}.");
                     Thread.Sleep(1000);
                     goto Case3;
-                }      
+                }
             }
             break;
         case "4":
-            Case4:
+        Case4:
             Console.Clear();
             bool caseFourLoop = true;
             while (caseFourLoop)
             {
                 gcLibrary.ListBooksToReturn();
-                Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Return another book\n3. Checkout a book\n4. Quit\n ");
+                Console.WriteLine("Would you like to:\n\n1. Return to Menu \n2. Return a book\n3. Checkout a book\n4. Quit\n ");
                 string inputFour = Console.ReadLine();
                 if (inputFour == "1")
                 {
@@ -112,11 +133,11 @@ while (runProgram)
                 else
                 {
                     goto Case5;
-                } 
+                }
             }
             break;
         case "5":
-            Case5:
+        Case5:
             Console.WriteLine("Thank you for stopping by!");
             Thread.Sleep(800);
             Console.WriteLine("Happy reading!");
@@ -129,3 +150,11 @@ while (runProgram)
             break;
     }
 }
+
+//FileIO
+StreamWriter writer = new StreamWriter(libraryPath);
+foreach (Book book in gcLibrary.ListOfBooks)
+{
+    writer.WriteLine($"{book.OnShelf},{book.Title},{book.Author},{book.Category},{book.DueDate},{book.Condition}");
+}
+writer.Close();

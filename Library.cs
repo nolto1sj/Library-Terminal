@@ -8,22 +8,12 @@ namespace LibraryTerminal
 {
     public class Library
     {
-        public static List<Book> ListOfBooks = new List<Book>
-        {
-         new Book("Available", "IT", "Stephen King", "Horror", "", "Fair"),
-         new Book("Available", "Dune", "Frank Herbert", "Sci-fi", "", "Fair"),
-         new Book("Available", "Neverwhere", "Neil Gaiman", "Fantasy", "", "New"),
-         new Book("Available", "Black Count", "Tom Reiss", "Non-fiction", "", "Fair"),
-         new Book("Available", "The Alchemist", "Paulo Coelho", "Fantasy", "", "Fair"),
-         new Book("Available", "Lying For Money", "Dan Davies", "True Crime", "", "Fair"),
-         new Book("Available", "Things Fall Apart", "Chinua Achebe", "Fiction", "", "Good"),
-         new Book("Available", "Station Eleven", "Emily St. John Mandel", "Sci-fi", "", "New"),
-         new Book("Available", "Perdido Street Station", "China Mieville", "Sci-fi", "", "New"),
-         new Book("Available", "The Great and Secret Show", "Clive Barker", "Fantasy", "", "Fair"),
-         new Book("Available", "Half Of a Yellow Sun", "Chimamanda Adichie", "Fiction", "", "Good"),
-         new Book("Available", "Kafka On The Shore", "Haruki Murakami", "Magical Realism", "", "Fair"),
-        };
+        public List<Book> ListOfBooks;
 
+        public Library()
+        {
+            this.ListOfBooks = new List<Book>();
+        }
         public void ListAllBooks()
         {
             Console.WriteLine(string.Format($"{"Idx",-5}  {"Title",-26} {"Author",-23} {"Status",-15} {"DueDate",-5}"));
@@ -70,7 +60,7 @@ namespace LibraryTerminal
                     Thread.Sleep(2000);
                     break;
                 }
-                Thread.Sleep(1500);
+                Thread.Sleep(300);
                 Console.Clear();
             }
         }
@@ -193,7 +183,7 @@ namespace LibraryTerminal
                 response = response - 1;
                 Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
                 booksToReturn[response].OnShelf = "Available";
-                booksToReturn[response].DueDate = "";
+                booksToReturn[response].DueDate = "N/A";
                 Thread.Sleep(1500);
                 Console.Clear();
             }
@@ -204,6 +194,11 @@ namespace LibraryTerminal
                 Console.Clear();
             }
         }
-        public Library() { }
+
+        public void AddBooks(string onShelf, string title, string author, string category, string dueDate, string condition)
+        {
+            this.ListOfBooks.Add(new Book(onShelf, title, author, category, dueDate, condition));
+        }
+        
     }
 }
