@@ -156,6 +156,8 @@ namespace LibraryTerminal
         
         public void ListBooksToReturn()
         {
+            Waypoint1:
+            Console.Clear();
             List<Book> booksToReturn = new List<Book>();
             booksToReturn = ListOfBooks.Where(x => x.OnShelf == "Not Available").ToList();
             if (booksToReturn.Count >= 1)
@@ -179,13 +181,23 @@ namespace LibraryTerminal
                     }
                 }
                 Console.WriteLine("Please enter the index of the book you wish to return");
-                int response = int.Parse(Console.ReadLine());
-                response = response - 1;
-                Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
-                booksToReturn[response].OnShelf = "Available";
-                booksToReturn[response].DueDate = "N/A";
-                Thread.Sleep(1500);
-                Console.Clear();
+                try
+                {
+                    int response = int.Parse(Console.ReadLine());
+                    response = response - 1;
+                    Console.WriteLine("The following book will be returned: " + booksToReturn[response].Title + " by " + booksToReturn[response].Author);
+                    booksToReturn[response].OnShelf = "Available";
+                    booksToReturn[response].DueDate = "N/A";
+                    Thread.Sleep(1500);
+                    Console.Clear();
+                }
+                catch
+                {
+                    Console.WriteLine($"Invalid index. Please try again.");
+                    Thread.Sleep(1000);
+                    goto Waypoint1;
+                }
+                
             }
             else
             {
